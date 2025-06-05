@@ -1,0 +1,46 @@
+<div class="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+  <div class="bg-white shadow-xl rounded-3xl p-8 w-full max-w-lg">
+    <h2 class="text-3xl font-bold text-center text-indigo-800 mb-6">
+      🩺 Đặt lịch khám bệnh
+    </h2>
+
+    <form class="space-y-4">
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">Họ tên bệnh nhân</label>
+        <input type="text" placeholder="Nguyễn Văn A" class="w-full border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+      </div>
+
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">Số điện thoại</label>
+        <input type="tel" placeholder="0123456789" class="w-full border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+      </div>
+
+      <div class="flex gap-4">
+        <div class="w-1/2">
+          <label class="block text-gray-700 font-medium mb-1">Ngày khám</label>
+          <input type="date" class="w-full border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+        </div>
+        <div class="w-1/2">
+          <label class="block text-gray-700 font-medium mb-1">Giờ khám</label>
+          <input type="time" class="w-full border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">Ghi chú (nếu có)</label>
+        <textarea rows="3" placeholder="Nhập thông tin bổ sung..." class="w-full border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+      </div>
+
+      <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-xl transition duration-300">
+        Đặt lịch ngay
+      </button>
+    </form>
+  </div>
+
+  <!-- Nút Đăng nhập bác sĩ -->
+  <div class="fixed top-6 right-6">
+    <a href="/login" class="bg-gray-800 text-white px-4 py-2 rounded-xl hover:bg-gray-700 transition duration-300 shadow-md">
+      Đăng nhập bác sĩ
+    </a>
+  </div>
+</div>

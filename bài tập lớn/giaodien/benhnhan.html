@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý bệnh nhân</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background-color: #f9fbfc;
+      margin: 0;
+      padding: 30px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 30px;
+    }
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      margin-bottom: 30px;
+    }
+
+    form input, form textarea {
+      flex: 1 1 200px;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    form button {
+      padding: 12px 20px;
+      background-color: #2980b9;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #1f6391;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th {
+      background-color: #2c3e50;
+      color: white;
+      padding: 12px;
+      text-align: left;
+    }
+
+    td {
+      padding: 12px;
+      border-bottom: 1px solid #eee;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f8f8f8;
+    }
+
+    td button {
+      background-color: #e74c3c;
+      border: none;
+      padding: 6px 12px;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      margin-right: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    td button:hover {
+      background-color: #c0392b;
+    }
+
+    #recordsModal {
+      display: none;
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      z-index: 1000;
+      min-width: 350px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    #recordsModal h3 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+
+    #recordsList {
+      max-height: 250px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 6px;
+      background-color: #f9f9f9;
+    }
+
+    #recordsModal input,
+    #recordsModal textarea,
+    #recordsModal button {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0;
+      font-size: 14px;
+    }
+
+    #recordsModal button {
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    #recordsModal button:hover {
+      background-color: #1e874b;
+    }
+
+    .export-button {
+      background-color: #8e44ad;
+      color: white;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+
+    .export-button:hover {
+      background-color: #6c3483;
+    }
+
+    @media (max-width: 600px) {
+      form {
+        flex-direction: column;
+      }
+
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      th, td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+      }
+
+      td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        font-weight: bold;
+        text-align: left;
+      }
+
+      th {
+        background-color: #2c3e50;
+        color: #fff;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+      }
+    }
+  </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://unpkg.com/jspdf-autotable@3.8.0/dist/jspdf.plugin.autotable.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+</head>
+
+<body>
+  <h2>Quản lý thông tin bệnh nhân</h2>
+
+  <form id="addPatientForm">
+    <input type="text" id="newName" placeholder="Họ tên" required>
+    <input type="text" id="newPhone" placeholder="SĐT" required>
+    <input type="text" id="newNote" placeholder="Ghi chú">
+    <button type="submit">Thêm bệnh nhân</button>
+  </form>
+
+  <button onclick="exportPatientsPDF()" class="export-button">Xuất PDF</button>
+
+  <table id="patientsTable">
+    <thead>
+      <tr>
+        <th>Họ tên</th>
+        <th>SĐT</th>
+        <th>Ghi chú</th>
+        <th>Hành động</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <div id="recordsModal">
+    <h3 id="modalTitle">Hồ sơ khám bệnh</h3>
+    <div id="recordsList"></div>
+    <form id="addRecordForm">
+      <input type="date" id="recordDate" required>
+      <input type="text" id="diagnosis" placeholder="Chẩn đoán" required>
+      <textarea id="prescription" placeholder="Toa thuốc"></textarea>
+      <textarea id="recordNote" placeholder="Ghi chú"></textarea>
+      <button type="submit">Thêm hồ sơ</button>
+    </form>
+    <button onclick="closeRecordsModal()">Đóng</button>
+  </div>
+
+  <script src="../xuli/js/bn.js"></script>
+</body>
+</html>

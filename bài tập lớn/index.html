@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phòng khám tư nhân Gà con</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../ha/botri.css">
+</head>
+<body>
+  <header class="header">
+    <div class="contact-info">
+      <span>☎ Gọi: 1900 6750</span>
+      <span>📧 Email: support@sapo.vn</span>
+    </div>
+    <a href="login.html" class="login-link">Đăng nhập bác sĩ</a>
+  </header>
+
+  <div class="container">
+    <div class="image-side">
+      <img src="../images/Untitled (2).png" alt="Phòng khám Gà con">
+    </div>
+    <div class="form-side">
+      <h2>Đặt lịch khám bệnh</h2>
+      <form id="bookingForm">
+        <input type="text" name="patient_name" placeholder="Họ tên bệnh nhân" required>
+        <input type="tel" name="phone" placeholder="Số điện thoại" required>
+        <input type="date" name="date" required>
+        <textarea name="note" placeholder="Ghi chú (nếu có)"></textarea>
+        <button type="submit">Đặt lịch</button>
+        <div id="message"></div>
+      </form>
+    </div>
+  </div>
+  
+  <div class="gallery">
+    <img src="../images/booking.png" alt="Minh họa đặt lịch khám bệnh">
+    <img src="../images/Untitled (1).png" alt="Lối vào phòng khám">
+    <img src="../images/a2-768x1024.png" alt="Phòng khám nội soi">
+  </div>
+
+  <div class="working-hours">
+    <h3>Giờ làm việc</h3>
+    <p>Thứ Hai - Thứ Bảy: 8:00 - 20:00</p>
+    <footer class="footer">
+        <p>©2025 Phòng khám Gà con.</p>
+    </footer>
+  </div>
+
+  <script src="../xuli/js/booking.js"></script>
+</body>
+</html>

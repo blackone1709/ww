@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập Bác sĩ - Phòng khám Gà con</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2980b9;
+            --primary-hover: #1f6391;
+            --text-color: #2c3e50;
+            --light-gray: #f5f7fa;
+            --border-color: #dbe1e8;
+            --error-color: #e74c3c;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-gray);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background-color: white;
+            padding: 15px 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        
+        .home-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .home-btn:hover {
+            background-color: var(--primary-hover);
+        }
+        
+        .login-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+        
+        #loginForm {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+        
+        .form-logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        h2 {
+            color: var(--text-color);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+        
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #95a5a6;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px 15px 12px 40px;
+            font-size: 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+        
+        input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.2);
+        }
+        
+        button#loginBtn {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        
+        button#loginBtn:hover {
+            background-color: var(--primary-hover);
+        }
+        
+        #loginMessage {
+            color: var(--error-color);
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            min-height: 20px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        @media (max-width: 600px) {
+            .header {
+                padding: 15px;
+            }
+            
+            #loginForm {
+                padding: 30px 20px;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">Phòng khám Gà con</a>
+        <button class="home-btn" onclick="window.location.href='index.html'">
+            <i class="fas fa-home"></i> Trang chủ
+        </button>
+    </header>
+    
+    <main class="login-container">
+        <form id="loginForm">
+            
+            <h2>Đăng nhập Bác sĩ</h2>
+            
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="username" placeholder="Tên đăng nhập" required>
+            </div>
+            
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" placeholder="Mật khẩu" required>
+            </div>
+            
+            <button type="submit" id="loginBtn">Đăng nhập</button>
+            <div id="loginMessage"></div>
+        </form>
+        <script src="../xuli/js/bs.js"></script>
+    </main>
+    
+    <footer class="footer">
+        <p>©2025 Phòng khám Gà con. All rights reserved.</p>
+    </footer>
+    
+    
+</body>
+</html>

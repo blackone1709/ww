@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý bác sĩ</title>
+        <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: #f9fbfc;
+            margin: 0;
+            padding: 30px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        form input {
+            flex: 1 1 200px;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        form button {
+            padding: 12px 20px;
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #1f6391;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th {
+            background-color: #2c3e50;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+
+        td button {
+            background-color: #e74c3c;
+            border: none;
+            padding: 6px 12px;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-right: 6px;
+            transition: background-color 0.3s ease;
+        }
+
+        td button:hover {
+            background-color: #c0392b;
+        }
+
+        @media (max-width: 600px) {
+            form {
+            flex-direction: column;
+            }
+
+            table, thead, tbody, th, td, tr {
+            display: block;
+            }
+
+            th, td {
+            text-align: right;
+            padding-left: 50%;
+            position: relative;
+            }
+
+            td::before {
+            content: attr(data-label);
+            position: absolute;
+            left: 15px;
+            font-weight: bold;
+            text-align: left;
+            }
+
+            th {
+            background-color: #2c3e50;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            }
+        }
+        </style>
+</head>
+<body>
+    <h2>Quản lý bác sĩ</h2>
+    <form id="addDoctorForm">
+        <input type="text" id="newFullName" placeholder="Tên bác sĩ" required>
+        <input type="text" id="newPhone" placeholder="Số điện thoại" required>
+        <input type="text" id="newWorkingHours" placeholder="Giờ làm việc (VD: 08:00-17:00)" required>
+        <button type="submit">Thêm bác sĩ</button>
+    </form>
+
+    <table id="doctorsTable">
+        <thead>
+            <tr>
+                <th>Tên bác sĩ</th>
+                <th>Số điện thoại</th>
+                <th>Giờ làm việc</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Jssss -->
+        </tbody>
+    </table>
+
+    <script src="../xuli/js/doctor.js"></script>
+</body>
+</html>
